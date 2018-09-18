@@ -2,6 +2,7 @@ package beans;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
@@ -31,7 +32,7 @@ public class Bb {
     public String getStringSex() {
 		// return文の""を消し、
         //条件演算子を使って「男性」または「女性」の文字列を返しなさい
-        return "";
+        return ((this.sex == 1 ) ? "男性" : "女性");
     }
 
     // 関心のある分野を文字列にして返す
@@ -40,6 +41,9 @@ public class Bb {
         StringBuilder buf = new StringBuilder();
 		// ここに処理を記述する
         //(拡張for文を使ってbufに配列要素と空白を追加しなさい)
+        for(String str : this.interest) {
+        	buf.append(str + "　");
+        }
         return buf.toString();
     }
 
@@ -48,7 +52,7 @@ public class Bb {
     public String getStringMagazine() {
 		// return文の""を消し、
         // 条件演算子を使って「受け取る」または「受け取らない」の文字列を返しなさい
-        return "";
+        return ((this.magazine) ? "受け取る" : "受け取らない");
     }
     // 生年のMap
     private static Map<Integer, Integer> yearItems;
